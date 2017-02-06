@@ -1,0 +1,15 @@
+Infrastructure Name:
+  1. URL to the web site of the infrastructure or URL to the installation manual of the selected distributed platform
+  2. Name of the operating system for all the nodes
+  3. Name of the scheduler
+  4. Name of the distributed/parallel file systems
+  5. Name of the CloudLab site that would best represent this infrastructure.
+  
+SuperMic
+  1. 
+  2. Red Hat Enterprise Linux 6
+  3. 
+  4. 
+  5. 
+  
+  
