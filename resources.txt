@@ -6,10 +6,29 @@ Infrastructure Name:
   5. Name of the CloudLab site that would best represent this infrastructure.
   
 SuperMic
-  1. 
+  1. https://portal.xsede.org/lsu-supermic
   2. Red Hat Enterprise Linux 6
   3. TORQUE
-  4. 
+  4. Lustre
   5. 
   
-  
+Jetstream
+  1. https://portal.xsede.org/jetstream
+  2. User defined per VM
+  3. N/A
+  4. Ceph for VM block storage
+  5. 
+
+Wrangler
+  1. https://portal.xsede.org/tacc-wrangler
+  2. Linux (CentOS)
+  3. SLURM
+  4. Lustre
+  5. 
+
+Palmetto Cluster
+  1. https://www.palmetto.clemson.edu/palmetto
+  2. Linux
+  3. PBS
+  4. 
+  5. 
