@@ -5,7 +5,7 @@ Infrastructure Name:
   4. Name of the distributed/parallel file systems
   5. Name of the CloudLab site that would best represent this infrastructure.
   
-SuperMic
+SuperMic (our assigned infrastructure)
   1. https://portal.xsede.org/lsu-supermic
   2. Red Hat Enterprise Linux 6
   3. TORQUE
