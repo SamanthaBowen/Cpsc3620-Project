@@ -1,5 +1,6 @@
 #!/bin/bash
 
-# TODO: Install Lustre client.
+./InstallLustreClient.bsh
+
 sudo yum install torque-server
 # TODO: Configure TORQUE server.
