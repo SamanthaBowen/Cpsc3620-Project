@@ -3,4 +3,6 @@
 ./InstallLustreClient.bsh
 
 sudo yum install torque-server
-# TODO: Configure TORQUE server.
+pbs_server -t create 
+qterm
+pbs_server

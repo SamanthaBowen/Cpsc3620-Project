@@ -12,4 +12,9 @@ yum -y localinstall lustre-client-2.8.0-3.10.0_327.3.1.el7.x86_64.x86_64.rpm lus
 echo "options lnet networks=tcp1(eth0)" > /etc/modprobe.d/lnet.conf
 modprobe lnet
 
-# TODO: Mount filesystem for scratch whatevers and /home.
+mkdir -p /var/mnt/lustre
+# TODO: mount -t lustre <mgs ip>@<nid_name>:/<fs name> /var/mnt/lustre
+
+mount --bind /var/mnt/lustre/home /home
+mount --bind /var/mnt/lustre/work /work
+mount --bind /var/mnt/lustre/project /project

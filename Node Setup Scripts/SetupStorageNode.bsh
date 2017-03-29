@@ -17,4 +17,13 @@ yum -y localinstall *.rpm
 yum -y install openmpi lustre sg3_utils
 yum -y install lustre-tests
 
-# TODO: Create Lustre file system and configure Lustre server.
+# TODO: Reboot
+
+mkfs.lustre --fsname=lustre --mgs --mdt --ost /dev/sdb1
+
+mkdir -p /var/mnt/lustre
+mount -t lustre /dev/vdb1 /var/mnt/lustre/
+
+mount --bind /var/mnt/lustre/home /home
+mount --bind /var/mnt/lustre/work /work
+mount --bind /var/mnt/lustre/project /project
