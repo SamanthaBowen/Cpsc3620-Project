@@ -5,5 +5,5 @@
 sudo yum install torque-client.
 
 # TODO: Substitute "headnode" with host name of the actual head node.
-cat "$pbsserver     headnode       # hostname running pbs server" >> $TORQUE_HOME/mom_priv/config
+cat "$pbsserver     head           # hostname running pbs server" >> $TORQUE_HOME/mom_priv/config
 cat "$logevent      225            # bitmap of which events to log" >> $TORQUE_HOME/mom_priv/config
