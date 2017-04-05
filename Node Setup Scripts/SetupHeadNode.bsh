@@ -21,6 +21,7 @@ wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RP
 #yum -y install *.rpm
 apt-get -y install alien
 alien -i *.rpm
+apt-get install lustre-utils
 
 #yum -y install openmpi sg3_utils
 apt-get -y install libopenmpi1.6 sg3-utils 
