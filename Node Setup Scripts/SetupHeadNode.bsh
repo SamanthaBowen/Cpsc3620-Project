@@ -19,7 +19,7 @@ wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RP
 wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/lustre-tests-2.9.0-1.el7.x86_64.rpm
 
 #yum -y install *.rpm
-apt-get install alien
+apt-get -y install alien
 alien -i *.rpm
 
 #yum -y install openmpi sg3_utils
@@ -43,6 +43,7 @@ mount --bind /var/mnt/lustre/work /work
 mount --bind /var/mnt/lustre/project /project
 
 apt-get -y install torque-server
+cat /etc/hostname > '/etc/torque/server_name'
 pbs_server -t create 
 qterm
 pbs_server
