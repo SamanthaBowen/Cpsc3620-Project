@@ -44,6 +44,8 @@ mount --bind /var/mnt/lustre/work /work
 mount --bind /var/mnt/lustre/project /project
 
 apt-get -y install torque-server
+export TORQUE_HOME=/var/spool/torque
+
 echo "head" > '/etc/torque/server_name'
 pbs_server -t create
 qterm
