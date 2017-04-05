@@ -51,8 +51,9 @@ export TORQUE_HOME=/var/spool/torque
 
 hostname > '/etc/torque/server_name'
 
-touch $TORQUE_HOME/server_priv/nodes
-'compute-0' >> $TORQUE_HOME/server_priv/nodes
+touch /var/spool/torque/server_priv/nodes
+echo 'compute-0' >> /var/spool/torque/server_priv/nodes
+echo 'hybrid-0' >> /var/spool/torque/server_priv/nodes
 
 pbs_server -t create
 qmgr -c "set server scheduling=true"
