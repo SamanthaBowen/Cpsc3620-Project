@@ -51,6 +51,9 @@ export TORQUE_HOME=/var/spool/torque
 
 hostname > '/etc/torque/server_name'
 
+touch $TORQUE_HOME/server_priv/nodes
+'compute-0' >> $TORQUE_HOME/server_priv/nodes
+
 pbs_server -t create
 qmgr -c "set server scheduling=true"
 qmgr -c "set server query_other_jobs=true"

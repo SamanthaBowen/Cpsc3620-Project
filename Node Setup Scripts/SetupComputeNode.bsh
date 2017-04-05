@@ -29,5 +29,5 @@ apt-get -y install torque-client torque-mom
 export TORQUE_HOME=/var/spool/torque
 
 echo "head" > '/etc/torque/server_name'
-cat "$pbsserver     head           # hostname running pbs server" >> $TORQUE_HOME/mom_priv/config
-cat "$logevent      225            # bitmap of which events to log" >> $TORQUE_HOME/mom_priv/config
+echo "$pbsserver     head           # hostname running pbs server" >> $TORQUE_HOME/mom_priv/config
+echo "$logevent      225            # bitmap of which events to log" >> $TORQUE_HOME/mom_priv/config
