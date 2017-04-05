@@ -49,11 +49,16 @@ mount --bind /var/mnt/lustre/project /project
 apt-get -y install torque-server torque-scheduler torque-client
 export TORQUE_HOME=/var/spool/torque
 
-echo "head" > '/etc/torque/server_name'
+hostname > '/etc/torque/server_name'
 
 pbs_server -t create
 qmgr -c "set server scheduling=true"
 qmgr -c "set server query_other_jobs=true"
+qmgr -c "create queue batch queue_type=execution"
+qmgr -c "set queue batch started=true"
+qmgr -c "set queue batch enabled=true"
+qmgr -c "set queue batch resources_default.nodes=1"
+qmgr -c "set queue batch resources_default.walltime=3600"
 qmgr -c "set server default_queue=batch"
 qterm
 
