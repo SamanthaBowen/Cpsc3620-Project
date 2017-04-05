@@ -8,7 +8,7 @@ cd ~/packages/lustre
 wget -r -np -nH https://downloads.hpdd.intel.com/public/lustre/lustre-2.9.0/el7/client/RPMS/x86_64/
 
 #yum -y install lustre-client-2.8.0-3.10.0_327.3.1.el7.x86_64.x86_64.rpm lustre-client-dkms-2.8.0-1.el7.noarch.rpm lustre-client-modules-2.8.0-3.10.0_327.3.1.el7.x86_64.x86_64.rpm
-apt-get install alien
+apt-get -y install alien
 alien -i *.rpm
 
 echo "options lnet networks=tcp1(eth0)" > /etc/modprobe.d/lnet.conf
