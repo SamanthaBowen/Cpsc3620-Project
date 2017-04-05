@@ -4,6 +4,7 @@
 # Used: http://cdn.opensfs.org/wp-content/uploads/2015/04/Lustre-101_Andrus.pdf
 
 # Used: https://help.ubuntu.com/community/TorquePbsHowto
+# Used: https://wiki.archlinux.org/index.php/TORQUE
 
 # TODO: May need to turn selinux off and reboot before all this.
 
@@ -49,6 +50,11 @@ apt-get -y install torque-server torque-scheduler torque-client
 export TORQUE_HOME=/var/spool/torque
 
 echo "head" > '/etc/torque/server_name'
+
 pbs_server -t create
+qmgr -c "set server scheduling=true"
+qmgr -c "set server query_other_jobs=true"
+qmgr -c "set server default_queue=batch"
 qterm
+
 pbs_server
