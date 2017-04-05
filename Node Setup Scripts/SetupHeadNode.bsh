@@ -18,14 +18,18 @@ wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RP
 wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/kmod-lustre-osd-ldiskfs-2.9.0-1.el7.x86_64.rpm
 wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/lustre-tests-2.9.0-1.el7.x86_64.rpm
 
-yum -y install *.rpm
-yum -y install openmpi sg3_utils
+#yum -y install *.rpm
+apt-get install alien
+alien -i *.rpm
+
+#yum -y install openmpi sg3_utils
+apt-get -y install libopenmpi1.6 sg3-utils 
 
 echo “options lnet networks=tcp”> /etc/modprobe.d/lnet.conf
-chkconfig lnet --add
-chkconfig lnet on
-chkconfig lustre --add
-chkconfig lustre on
+#chkconfig lnet --add
+#chkconfig lnet on
+#chkconfig lustre --add
+#chkconfig lustre on
 
 # TODO: Reboot?
 
@@ -38,9 +42,7 @@ mount --bind /var/mnt/lustre/home /home
 mount --bind /var/mnt/lustre/work /work
 mount --bind /var/mnt/lustre/project /project
 
-sudo yum install torque-server
+apt-get -y install torque-server
 pbs_server -t create 
 qterm
 pbs_server
-
-
