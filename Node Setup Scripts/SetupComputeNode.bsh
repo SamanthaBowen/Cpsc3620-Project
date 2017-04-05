@@ -2,6 +2,8 @@
 
 # Used: https://www.watters.ws/mediawiki/index.php/Lustre_Install_Notes
 
+# Used: https://help.ubuntu.com/community/TorquePbsHowto
+
 mkdir ~/packages/lustre
 cd ~/packages/lustre
 
@@ -21,7 +23,7 @@ mount --bind /var/mnt/lustre/home /home
 mount --bind /var/mnt/lustre/work /work
 mount --bind /var/mnt/lustre/project /project
 
-apt-get -y install torque-client
+apt-get -y install torque-client torque-mom
 export TORQUE_HOME=/var/spool/torque
 
 cat "$pbsserver     head           # hostname running pbs server" >> $TORQUE_HOME/mom_priv/config

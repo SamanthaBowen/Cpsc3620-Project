@@ -3,6 +3,8 @@
 # Used: https://www.watters.ws/mediawiki/index.php/Lustre_Install_Notes
 # Used: http://cdn.opensfs.org/wp-content/uploads/2015/04/Lustre-101_Andrus.pdf
 
+# Used: https://help.ubuntu.com/community/TorquePbsHowto
+
 # TODO: May need to turn selinux off and reboot before all this.
 
 mkdir ~/packages/lustre
@@ -43,7 +45,7 @@ mount --bind /var/mnt/lustre/home /home
 mount --bind /var/mnt/lustre/work /work
 mount --bind /var/mnt/lustre/project /project
 
-apt-get -y install torque-server
+apt-get -y install torque-server torque-scheduler torque-client
 export TORQUE_HOME=/var/spool/torque
 
 echo "head" > '/etc/torque/server_name'
