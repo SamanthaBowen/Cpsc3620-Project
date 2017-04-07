@@ -4,30 +4,30 @@
 
 # Used: https://help.ubuntu.com/community/TorquePbsHowto
 
-mkdir ~/packages/lustre
-cd ~/packages/lustre
-
 apt-get -y update
 
-wget -r -np -nH https://downloads.hpdd.intel.com/public/lustre/lustre-2.9.0/el7/client/RPMS/x86_64/
+#mkdir ~/packages/lustre
+#cd ~/packages/lustre
+
+#wget -r -np -nH https://downloads.hpdd.intel.com/public/lustre/lustre-2.9.0/el7/client/RPMS/x86_64/
 
 #yum -y install lustre-client-2.8.0-3.10.0_327.3.1.el7.x86_64.x86_64.rpm lustre-client-dkms-2.8.0-1.el7.noarch.rpm lustre-client-modules-2.8.0-3.10.0_327.3.1.el7.x86_64.x86_64.rpm
-apt-get -y install alien
-alien -i *.rpm
+#apt-get -y install alien
+#alien -i *.rpm
 
-echo "options lnet networks=tcp1(eth0)" > /etc/modprobe.d/lnet.conf
-modprobe lnet
+#echo "options lnet networks=tcp1(eth0)" > /etc/modprobe.d/lnet.conf
+#modprobe lnet
 
-mkdir -p /var/mnt/lustre
-mount -t lustre storage@tcp1:/lustre /var/mnt/lustre
+#mkdir -p /var/mnt/lustre
+#mount -t lustre head@tcp1:/lustre /var/mnt/lustre
 
-mount --bind /var/mnt/lustre/home /home
-mount --bind /var/mnt/lustre/work /work
-mount --bind /var/mnt/lustre/project /project
+#mount --bind /var/mnt/lustre/home /home
+#mount --bind /var/mnt/lustre/work /work
+#mount --bind /var/mnt/lustre/project /project
 
 apt-get -y install torque-client torque-mom
 export TORQUE_HOME=/var/spool/torque
 
-echo "head" > '/etc/torque/server_name'
-echo '$pbsserver     head           # hostname running pbs server' >> /var/spool/torque/mom_priv/config
+echo "headx" > '/etc/torque/server_name'
+echo '$pbsserver     headx           # hostname running pbs server' >> /var/spool/torque/mom_priv/config
 echo '$logevent      225            # bitmap of which events to log' >> /var/spool/torque/mom_priv/config

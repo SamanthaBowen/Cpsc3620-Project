@@ -6,30 +6,39 @@
 # Used: https://help.ubuntu.com/community/TorquePbsHowto
 # Used: https://wiki.archlinux.org/index.php/TORQUE
 
+#echo 'deb http://us.archive.ubuntu.com/ubuntu precise main universe' > /etc/apt/sources.list
+#echo 'deb-src http://us.archive.ubuntu.com/ubuntu precise main universe' > /etc/apt/sources.list
+
+apt-get -y update
+
 # TODO: May need to turn selinux off and reboot before all this.
 
-mkdir ~/packages/lustre
-cd ~/packages/lustre
+#mkdir -p ~/packages/lustre
+#cd ~/packages/lustre
 
-wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/e2fsprogs-1.42.13.wc5-7.el7.x86_64.rpm
-wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/e2fsprogs-libs-1.42.13.wc5-7.el7.x86_64.rpm
-wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/libss-1.42.13.wc5-7.el7.x86_64.rpm
-wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/libcom_err-1.42.13.wc5-7.el7.x86_64.rpm
-wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/kernel-3.10.0-514.el7_lustre.x86_64.rpm
-wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/kmod-lustre-2.9.0-1.el7.x86_64.rpm
-wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/lustre-2.9.0-1.el7.x86_64.rpm
-wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/kmod-lustre-osd-ldiskfs-2.9.0-1.el7.x86_64.rpm
-wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/lustre-tests-2.9.0-1.el7.x86_64.rpm
+#wget -r -np -nH -nd https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/
+#wget -r -np -nH -nd https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/
+
+#wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/e2fsprogs-1.42.13.wc5-7.el7.x86_64.rpm
+#wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/e2fsprogs-libs-1.42.13.wc5-7.el7.x86_64.rpm
+#wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/libss-1.42.13.wc5-7.el7.x86_64.rpm
+#wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el7/RPMS/x86_64/libcom_err-1.42.13.wc5-7.el7.x86_64.rpm
+#wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/kernel-3.10.0-514.el7_lustre.x86_64.rpm
+#wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/kmod-lustre-2.9.0-1.el7.x86_64.rpm
+#wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/lustre-2.9.0-1.el7.x86_64.rpm
+#wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/kmod-lustre-osd-ldiskfs-2.9.0-1.el7.x86_64.rpm
+#wget https://downloads.hpdd.intel.com/public/lustre/latest-release/el7/server/RPMS/x86_64/lustre-tests-2.9.0-1.el7.x86_64.rpm
 
 #yum -y install *.rpm
-apt-get -y install alien
-alien -i *.rpm
-apt-get install lustre-utils
+#apt-get -y install alien
+#alien -i --scripts *.rpm
+#apt-get -y install e2fsprogs lustre-utils
+#linux-patch-lustre
 
 #yum -y install openmpi sg3_utils
 apt-get -y install libopenmpi1.6 sg3-utils 
 
-echo “options lnet networks=tcp”> /etc/modprobe.d/lnet.conf
+#echo 'options lnet networks=tcp' > /etc/modprobe.d/lnet.conf
 #chkconfig lnet --add
 #chkconfig lnet on
 #chkconfig lustre --add
@@ -37,14 +46,14 @@ echo “options lnet networks=tcp”> /etc/modprobe.d/lnet.conf
 
 # TODO: Reboot?
 
-mkfs.lustre --fsname=lustre --mgs --mdt --ost /dev/sdb1
+#mkfs.lustre --fsname=lustre --mgs --mdt /dev/sda4
 
-mkdir -p /var/mnt/lustre
-mount -t lustre /dev/vdb1 /var/mnt/lustre/
+#mkdir -p /var/mnt/lustre
+#mount -t lustre /dev/vdb1 /var/mnt/lustre/
 
-mount --bind /var/mnt/lustre/home /home
-mount --bind /var/mnt/lustre/work /work
-mount --bind /var/mnt/lustre/project /project
+#mount --bind /var/mnt/lustre/home /home
+#mount --bind /var/mnt/lustre/work /work
+#mount --bind /var/mnt/lustre/project /project
 
 apt-get -y install torque-server torque-scheduler torque-client
 export TORQUE_HOME=/var/spool/torque
