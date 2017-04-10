@@ -18,5 +18,5 @@ The gruesome troubleshooting process and exploration of attempted workarounds br
 * The profile for the alternative Ubuntu variant can be located at [profile-Ubuntu.xml](profile-Ubuntu.xml).
 
 # Software Deployment
-* **The scripts to replicate our Centos Utah experiment can be located at [Node%20Setup%20Scripts/Centos](Node%20Setup%20Scripts/Centos) along with instructions.**
-* The script for the alternative Ubuntu variant can be located at [Node%20Setup%20Scripts/Ubuntu14](Node%20Setup%20Scripts/Ubuntu14) along with instructions.
+* **The scripts to replicate our Centos Utah experiment can be located at [Node Setup Scripts/Centos](Node Setup Scripts/Centos) along with instructions.**
+* The script for the alternative Ubuntu variant can be located at [Node Setup Scripts/Ubuntu14](Node%20Setup%20Scripts/Ubuntu14) along with instructions.
