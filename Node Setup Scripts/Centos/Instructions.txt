@@ -1,0 +1,19 @@
+Installing Lustre
+	Head, Compute-0
+		sudo InstallLustreServer.bsh
+	Head
+		sudo ConfigureLustreMServer-0
+	Compute-0
+		sudo ConfigureLustreOServer
+	Head
+		sudo ConfigureLustreMServer-1
+	Hybrid-0
+		sudo InstallLustreClient.bsh
+
+Installing Torque (broken)
+	Head, Compute-0, Hybrid-0
+		sudo InstallTorque.bsh
+	Head
+		sudo ConfigureTorqueServer.bsh
+	Compute-0, Hybrid-0
+		sudo ConfigureTorqueClient.bsh

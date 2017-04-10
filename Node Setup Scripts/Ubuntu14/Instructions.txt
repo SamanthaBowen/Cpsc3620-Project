@@ -1,0 +1,11 @@
+Installing Torque
+	head
+		sudo ./SetupHeadNode.bsh
+	compute-0 hybrid-0
+		sudo ./SetupComputeNode.bsh
+
+Installing Lustre
+	You can find commented-out broken code in both the SetupHeadNode and 
+	SetupComputeNode scripts. However, Lustre's (both server and client) 
+	requirement for kernels olders than what Ubuntu offers has been a roadblock 
+	to installing Lustre.

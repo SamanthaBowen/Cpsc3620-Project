@@ -1,0 +1,4 @@
+#!/bin/bash
+
+lctl pool_new lustre.pool0
+lctl pool_add lustre.pool0 lustre-OST0000

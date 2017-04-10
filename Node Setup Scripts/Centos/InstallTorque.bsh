@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Used: http://docs.adaptivecomputing.com/torque/5-1-1/Content/topics/hpcSuiteInstall/manual/1-installing/installingTorque.htm
+
+yum -y install libtool openssl-devel libxml2-devel boost-devel gcc gcc-c++ git
+
+git clone https://github.com/adaptivecomputing/torque.git -b 5.1.1 5.1.1 
+cd 5.1.1
+./autogen.sh
+./configure
+make
+make install
+
+cp contrib/init.d/trqauthd /etc/init.d/
+chkconfig --add trqauthd
+echo /usr/local/lib > /etc/ld.so.conf.d/torque.conf
+ldconfig
+service trqauthd start

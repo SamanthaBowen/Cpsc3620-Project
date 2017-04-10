@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Used: https://www.watters.ws/mediawiki/index.php/Lustre_Install_Notes
+
+# Used: https://help.ubuntu.com/community/TorquePbsHowto
+
+apt-get -y update
+
+#http://ftp.scientificlinux.org/linux/scientific/6.6/x86_64/updates/security/kernel-2.6.32-504.8.1.el6.x86_64.rpm
+#https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6/client/RPMS/x86_64/lustre-client-2.7.0-2.6.32_504.8.1.el6.x86_64.x86_64.rpm
+#https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6/client/RPMS/x86_64/lustre-client-modules-2.7.0-2.6.32_504.8.1.el6.x86_64.x86_64.rpm
+#yum install *.rpm
+#echo "options lnet networks=tcp(eth0)" > /etc/modprobe.d/lnet.conf
+#modprobe lnet
+
+#mkdir -p /var/mnt/lustre
+#mount -t lustre head@tcp:/lustre /var/mnt/lustre
+#mount --bind /var/mnt/lustre/home /home
+#mount --bind /var/mnt/lustre/work /work
+#mount --bind /var/mnt/lustre/project /project
+
+apt-get -y install torque-client torque-mom
+apt-get -y install libopenmpi1.6 sg3-utils 
+export TORQUE_HOME=/var/spool/torque
+
+echo "head" > '/etc/torque/server_name'
+echo '$pbsserver     head           # hostname running pbs server' >> /var/spool/torque/mom_priv/config
+echo '$logevent      225            # bitmap of which events to log' >> /var/spool/torque/mom_priv/config

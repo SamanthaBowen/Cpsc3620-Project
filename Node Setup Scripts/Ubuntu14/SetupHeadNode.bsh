@@ -2,7 +2,6 @@
 
 # Used: https://www.watters.ws/mediawiki/index.php/Lustre_Install_Notes
 # Used: http://cdn.opensfs.org/wp-content/uploads/2015/04/Lustre-101_Andrus.pdf
-
 # Used: https://help.ubuntu.com/community/TorquePbsHowto
 # Used: https://wiki.archlinux.org/index.php/TORQUE
 
@@ -37,16 +36,7 @@ apt-get -y update
 
 #yum -y install openmpi sg3_utils
 apt-get -y install libopenmpi1.6 sg3-utils 
-
-#echo 'options lnet networks=tcp' > /etc/modprobe.d/lnet.conf
-#chkconfig lnet --add
-#chkconfig lnet on
-#chkconfig lustre --add
-#chkconfig lustre on
-
-# TODO: Reboot?
-
-#mkfs.lustre --fsname=lustre --mgs --mdt /dev/sda4
+# 
 
 #mkdir -p /var/mnt/lustre
 #mount -t lustre /dev/vdb1 /var/mnt/lustre/

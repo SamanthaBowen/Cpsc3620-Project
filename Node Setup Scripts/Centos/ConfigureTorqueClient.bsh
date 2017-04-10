@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo "head" > '/var/spool/torque/server_name'
+
+export PATH=/usr/local/bin/:/usr/local/sbin/:$PATH
+./torque.setup root
+
+echo '$pbsserver     head           # hostname running pbs server' >> /var/spool/torque/mom_priv/config
+echo '$logevent      225            # bitmap of which events to log' >> /var/spool/torque/mom_priv/config
+
+cp contrib/init.d/pbs_mom /etc/init.d
+
+HOSTNAME=`hostname -s`
+cd /etc/init.d
+sed "s/daemon \$PBS_DAEMON \$args -d \$PBS_HOME/daemon \$PBS_DAEMON \$args -d \$PBS_HOME -H $HOSTNAME/g" pbs_mom > pbs_mom.new
+mv -f pbs_mom pbs_mom.bak
+mv -f pbs_mom.new pbs_mom
+chmod 755 pbs_mom
+
+chkconfig --add pbs_mom
+service pbs_mom start

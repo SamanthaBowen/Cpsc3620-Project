@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo 'options lnet networks=tcp(eth0)' > /etc/modprobe.d/lnet.conf
+chkconfig lnet --add
+chkconfig lnet on
+chkconfig lustre --add
+chkconfig lustre on
+
+echo 'Enter MGS Address:'
+read MDT_IP
+echo 'Enter OSS Address:'
+read OST_IP
+
+mkfs.lustre --fsname=lustre --mgs --mdt /dev/sda2
+
+mkdir -p /var/mnt/lustre
+mount -t lustre /dev/sda2 /var/mnt/lustre
+
+echo "" >> /etc/ldev.conf
+echo "$MDT_IP           - lustre-MDT0000 /dev/sda2" >> /etc/ldev.conf
+echo "$OST_IP           - lustre-OST0000 /dev/sda2" >> /etc/ldev.conf
+
+service lustre start

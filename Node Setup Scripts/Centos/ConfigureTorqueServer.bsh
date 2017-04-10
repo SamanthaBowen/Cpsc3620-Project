@@ -1,0 +1,36 @@
+#!/bin/bash
+
+hostname > '/var/spool/torque/server_name'
+
+export PATH=/usr/local/bin/:/usr/local/sbin/:$PATH
+./torque.setup root
+#pbs_server -t create
+qmgr -c "set server scheduling=true"
+qmgr -c "set server acl_hosts = head"
+qmgr -c "set server query_other_jobs=true"
+qmgr -c 'set server submit_hosts=head'
+qmgr -c "create queue batch queue_type=execution"
+qmgr -c "set queue batch started=true"
+qmgr -c "set queue batch enabled=true"
+qmgr -c "set queue batch resources_default.nodes=1"
+qmgr -c "set queue batch resources_default.walltime=3600"
+qmgr -c "set server default_queue=batch"
+qterm
+
+touch /var/spool/torque/server_priv/nodes
+echo 'compute-0' >> /var/spool/torque/server_priv/nodes
+echo 'hybrid-0' >> /var/spool/torque/server_priv/nodes
+
+cp contrib/init.d/pbs_server /etc/init.d
+
+HOSTNAME=`hostname -s`
+cd /etc/init.d
+sed "s/daemon \$PBS_DAEMON -d \$PBS_HOME \$PBS_ARGS/daemon \$PBS_DAEMON -d \$PBS_HOME \$PBS_ARGS -H $HOSTNAME/g" pbs_server > pbs_server.new
+mv -f pbs_server pbs_server.bak
+mv -f pbs_server.new pbs_server
+chmod 755 pbs_server
+
+daemon $PBS_DAEMON -d $PBS_HOME $PBS_ARGS -H head
+
+chkconfig --add pbs_server
+service pbs_server start
