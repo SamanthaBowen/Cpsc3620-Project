@@ -1,11 +1,11 @@
 #!/bin/bash
 
-yum install ca-certificates
+yum -y install ca-certificates
 
 wget http://ftp.scientificlinux.org/linux/scientific/6.6/x86_64/updates/security/kernel-2.6.32-504.8.1.el6.x86_64.rpm
 wget https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6/client/RPMS/x86_64/lustre-client-2.7.0-2.6.32_504.8.1.el6.x86_64.x86_64.rpm
 wget https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6/client/RPMS/x86_64/lustre-client-modules-2.7.0-2.6.32_504.8.1.el6.x86_64.x86_64.rpm
-yum install *.rpm
+yum -y install *.rpm
 
 echo "options lnet networks=tcp(eth0)" > /etc/modprobe.d/lnet.conf
 modprobe lnet
