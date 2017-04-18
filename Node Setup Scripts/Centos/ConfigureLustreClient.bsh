@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p /var/mnt/lustre
-mount -t lustre head@tcp:/lustre /var/mnt/lustre
+mount -t lustre head.cpsc3620-group6.emulab-net.utahddc.geniracks.net@tcp:/lustre /var/mnt/lustre
 
 mkdir -p /work
 mkdir -p /project
