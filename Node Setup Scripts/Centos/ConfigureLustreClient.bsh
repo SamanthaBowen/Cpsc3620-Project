@@ -3,6 +3,8 @@
 mkdir -p /var/mnt/lustre
 mount -t lustre head@tcp:/lustre /var/mnt/lustre
 
+mkdir -p /work
+mkdir -p /project
 mount --bind /var/mnt/lustre/home /home
 mount --bind /var/mnt/lustre/work /work
 mount --bind /var/mnt/lustre/project /project
