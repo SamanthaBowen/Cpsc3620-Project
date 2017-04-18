@@ -1,0 +1,8 @@
+#!/bin/bash
+
+mkdir -p /var/mnt/lustre
+mount -t lustre head@tcp:/lustre /var/mnt/lustre
+
+mount --bind /var/mnt/lustre/home /home
+mount --bind /var/mnt/lustre/work /work
+mount --bind /var/mnt/lustre/project /project

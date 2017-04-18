@@ -1,3 +1,5 @@
+Make sure the name of the experiment is "Cpsc3620-Group6".
+
 Installing Lustre
 	Head, Compute-0
 		sudo InstallLustreServer.bsh
@@ -9,6 +11,8 @@ Installing Lustre
 		sudo ConfigureLustreMServer-1
 	Hybrid-0
 		sudo InstallLustreClient.bsh
+	Head, Compute-0, Hybrid-0
+		sudo ConfigureLustreClient.bsh
 
 Installing Torque (broken)
 	Head, Compute-0, Hybrid-0

@@ -9,6 +9,3 @@ yum -y install *.rpm
 
 echo "options lnet networks=tcp(eth0)" > /etc/modprobe.d/lnet.conf
 modprobe lnet
-
-mkdir -p /var/mnt/lustre
-mount -t lustre head@tcp:/lustre /var/mnt/lustre

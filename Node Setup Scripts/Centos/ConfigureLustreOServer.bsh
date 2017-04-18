@@ -6,15 +6,13 @@ chkconfig lnet on
 chkconfig lustre --add
 chkconfig lustre on
 
-echo 'Enter MGS Address:'
-read MDT_IP
-echo 'Enter OSS Address:'
-read OST_IP
+MDT_IP=head.cpsc3620-group6.emulab-net.utahddc.geniracks.net
+OST_IP=hybrid.cpsc3620-group6.emulab-net.utahddc.geniracks.net
 
 mkfs.lustre --fsname=lustre --ost --mgsnode=$MDT_IP@tcp --index=0 --reformat /dev/sda2
 
-mkdir -p /var/mnt/lustre
-mount -t lustre /dev/sda2 /var/mnt/lustre
+mkdir -p /var/mnt/lustre-s
+mount -t lustre /dev/sda2 /var/mnt/lustre-s
 
 echo "" >> /etc/ldev.conf
 echo "$MDT_IP           - lustre-MDT0000 /dev/sda2" >> /etc/ldev.conf
