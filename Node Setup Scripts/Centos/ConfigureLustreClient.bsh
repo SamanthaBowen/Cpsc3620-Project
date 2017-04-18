@@ -5,6 +5,9 @@ mount -t lustre head@tcp:/lustre /var/mnt/lustre
 
 mkdir -p /work
 mkdir -p /project
+mkdir -p /var/mnt/lustre/home
+mkdir -p /var/mnt/lustre/work
+mkdir -p /var/mnt/lustre/project
 mount --bind /var/mnt/lustre/home /home
 mount --bind /var/mnt/lustre/work /work
 mount --bind /var/mnt/lustre/project /project
