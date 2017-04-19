@@ -1,5 +1,5 @@
 # The Experiment
-At the time of submission, our experiment can be located at <https://www.cloudlab.us/status.php?uuid=845a1f6c-1cf0-11e7-ac8d-90e2ba22fee4>.
+At the time of submission, our experiment can be located at <https://www.cloudlab.us/status.php?uuid=f886c9cd-23f0-11e7-ac8e-90e2ba22fee4>.
 
 # The Variants
 The gruesome troubleshooting process and exploration of attempted workarounds brought about two attempted variants with tradeoffs.
